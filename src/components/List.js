@@ -1,7 +1,9 @@
 import Task from './Task'
 
-const List = ({ tasks }) => {
-  return tasks.map((task, index) => <Task task={task} key={index} />)
+const List = ({ tasks, delTask }) => {
+  return tasks.map((task, id) => (
+    <Task delTask={delTask} task={task} key={id} />
+  ))
 }
 
 export default List

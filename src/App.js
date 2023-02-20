@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 import { useState } from 'react'
 import './App.css'
 import List from './components/List'
@@ -18,10 +19,14 @@ function App() {
     if (tasks.filter((e) => e.title === text).length > 0) {
       return
     }
-    setTask([...tasks, { title: text, isDone: false }])
+    setTask([...tasks, { title: text, isDone: false, id: uuidv4() }])
   }
 
   console.log(tasks)
+
+  const deleteTask = (id) => {
+    setTask(tasks.filter((task) => task.id !== id))
+  }
 
   return (
     <div className="container">
@@ -34,14 +39,14 @@ function App() {
               value={text}
               type="text"
               id="myInput"
-              placeholder="Enter a new task"
+              placeholder="Enter a new task.."
             />
             <span onClick={addText} className="addBtn">
               Add
             </span>
           </div>
         </div>
-        <List tasks={tasks} />
+        <List tasks={tasks} delTask={deleteTask} />
       </div>
     </div>
   )
