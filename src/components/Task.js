@@ -2,8 +2,8 @@ import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 
 const Task = ({ task, delTask }) => {
   return (
-    <ul className="ulTask">
-      <li>
+    <ul className="ulTask" id="ulTask">
+      <li className="ulLi" id="ulLi">
         <AiFillCheckCircle className="iconsCheck" />
         {task.title}
         <AiFillCloseCircle
