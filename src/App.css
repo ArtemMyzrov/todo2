@@ -143,3 +143,7 @@ input {
   font-size: 25px;
   color: green;
 }
+.ulLi:hover .iconsClose,
+.ulLi:hover .iconsCheck {
+  display: block;
+}
