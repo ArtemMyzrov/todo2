@@ -147,3 +147,7 @@ input {
 .ulLi:hover .iconsCheck {
   display: block;
 }
+.title-compled {
+  text-align: center;
+  font-weight: 400;
+}

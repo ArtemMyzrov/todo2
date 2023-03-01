@@ -19,14 +19,27 @@ function App() {
     if (tasks.filter((e) => e.title === text).length > 0) {
       return
     }
-    setTask([...tasks, { title: text, isDone: false, id: uuidv4() }])
+    const newTask = { title: text, isDone: false, id: uuidv4() }
+    setTask([...tasks, newTask])
   }
-
-  console.log(tasks)
 
   const deleteTask = (id) => {
     setTask(tasks.filter((task) => task.id !== id))
   }
+
+  function toggleTaskCompleted(id) {
+    const updatedTasks = tasks.map((task) => {
+      if (id === task.id) {
+        return { ...task, isDone: !task.isDone }
+      }
+      return task
+    })
+
+    setTask(updatedTasks)
+  }
+
+  const taskIsDone = tasks.filter((task) => task.isDone).length
+  const countCompledTask = taskIsDone !== 1 ? 'tasks' : 'task'
 
   return (
     <div className="container">
@@ -46,8 +59,13 @@ function App() {
             </span>
           </div>
         </div>
-        <List tasks={tasks} delTask={deleteTask} />
+        <List
+          toggleTaskCompleted={toggleTaskCompleted}
+          tasks={tasks}
+          delTask={deleteTask}
+        />
       </div>
+      <h2 className="title-compled">{`You completed ${taskIsDone} ${countCompledTask}`}</h2>
     </div>
   )
 }

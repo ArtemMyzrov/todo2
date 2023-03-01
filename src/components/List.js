@@ -1,8 +1,14 @@
 import Task from './Task'
 
-const List = ({ tasks, delTask }) => {
-  return tasks.map((task, id) => (
-    <Task delTask={delTask} task={task} key={task.id} />
+const List = ({ tasks, delTask, toggleTaskCompleted, isDone }) => {
+  return tasks.map((task, id, comp) => (
+    <Task
+      delTask={delTask}
+      task={task}
+      key={task.id}
+      isDone={task.isDone}
+      toggleTaskCompleted={toggleTaskCompleted}
+    />
   ))
 }
 
