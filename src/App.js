@@ -65,7 +65,13 @@ function App() {
           delTask={deleteTask}
         />
       </div>
-      <h2 className="title-compled">{`You completed ${taskIsDone} ${countCompledTask}`}</h2>
+      {taskIsDone === 0 ? (
+        ''
+      ) : (
+        <h2 className="title-compled">
+          You completed {taskIsDone} {countCompledTask}
+        </h2>
+      )}
     </div>
   )
 }
